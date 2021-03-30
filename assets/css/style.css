@@ -1,3 +1,8 @@
+* {
+    background-color: lightskyblue;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
 main {
     margin: auto;
     text-align: center;
@@ -15,4 +20,19 @@ main {
 .choices {
     display: block;
     justify-content: center;
+    
+}
+
+button {
+    background-color: lightgoldenrodyellow;
+    color: black;
+    border-radius: 6px;
+}
+
+.scores {
+    font-weight: bolder;
+}
+
+.timer {
+    color: blue;
 }

@@ -21,9 +21,10 @@ var questions = [
     },
     {
         title: "What is the biggest planet in our Solar System?",
-        choice: ["Saturn", "Jupiter", "Earth", "Uranus"]
+        choice: ["Saturn", "Jupiter", "Earth", "Uranus"],
+        answer: "Jupiter"
     }
 ]
 
-var answers = ["365", "8", "Mercury"]
+// var wrongAnswers = ["300", "200", "364"]
 
