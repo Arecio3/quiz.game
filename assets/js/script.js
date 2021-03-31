@@ -1,16 +1,14 @@
 // varaible that holds the index of current questions
 var currentQuestionIndex = 0;
-// time length 
-// var time = questions.length * 15;
-var count =75;
-var counter = setInterval(time, 1000);
+var count = 75;
+
 // hooks into html 
 var startBtn = document.querySelector("#start");
 var questionsElement = document.querySelector("#questions");
 var timerElement = document.querySelector("#time");
 var questionChoices = document.querySelector("#choices");
-
-
+var timer;
+var correctAnswer = 0;
 
 
 // function for when you press the start quiz button
@@ -22,8 +20,10 @@ function startQuiz() {
     //removes the hide class from the questions div to swap out each question
     questionsElement.removeAttribute("class");
     //function that gets the current question that should be displayed 
-    setTime();
+    
     getCurrentQuestion();
+     
+    timer = setInterval(setTime, 1000);
     
 
 
@@ -31,9 +31,10 @@ function startQuiz() {
 }
 
 
-// function for cycling through the current questions that are diffrent 
+// function that retrieves the current question 
 function getCurrentQuestion() {
-    // makes the current question equal to the questions array which is also equal to 0 making it start at the first question 
+    // makes the current question equal to the questions array which is also equal to 0 making it start at the first question
+    console.log(questions);
     var currentQuestion = questions[currentQuestionIndex];
     // connects to the question title id in the HTML to push the title from the questions array to it with text content
     var titleElement = document.querySelector("#question-title");
@@ -42,7 +43,7 @@ function getCurrentQuestion() {
     console.log(currentQuestion);
     // stops choices from doubling  
     questionChoices.innerHTML = "";
-    // for loop for cycling through the diffrent questions
+    // for loop for incrementing through the diffrent questions
     for (var i = 0; i < currentQuestion.choice.length; i++) {
         // creates a button for each choice 
         var userChoice = document.createElement("button");
@@ -62,42 +63,61 @@ function getCurrentQuestion() {
 
 
 function getAnswer() {
-    console.log(this);
+    var answerElement = document.getElementById("showAnswer")
+
     // if the value of the click was an answer on the array it alerts that you got it correct
     if (this.value === questions[currentQuestionIndex].answer) {
-        alert("Correct!");
+        answerElement.innerHTML = "Correct!"
+        correctAnswer = correctAnswer + 1;
         // if a wrong choice was clicked than it alerts you
     } else {
-        alert("Wrong!");
-    }
+        answerElement.innerHTML = "Wrong!"
+        count = count - 10;
+    } 
     // increments the var by 1 so the next question appears when the getCurrentQuestion runs it prints the next question
-    currentQuestionIndex++;
-    getCurrentQuestion();
+    currentQuestionIndex++; 
+    if (currentQuestionIndex === questions.length-0) {
+        gameOver();
+    } else {
+        getCurrentQuestion();
+    }
 }
 
 
 
 
 function setTime() {
-    count = count - 1;
-    if(count <= 0) {
-        clearInterval(counter);
+    timerElement.textContent = count;
+    if (count <= 0) {
+       stopTimer(); 
+    } else {
+        count--
     }
+    
   }
 
+  function stopTimer () {
+      clearInterval(timer);
+
+  }
 
 
   function gameOver () {
+      stopTimer();
+      var pointElement = document.getElementById("showPoints")
       var endScreen = document.querySelector('#end-screen');
-      endScreen.setAttribute('class', 'choice');
+      endScreen.setAttribute('class', 'choices');
+      questionsElement.setAttribute('class', 'hide');
+      pointElement.innerHTML = "Your final score is" + " " + correctAnswer;
+      
   }
-gameOver();
-
-
-
 
 
 
 // is the click even listener for the quiz to start it's put in the end so all the questions are loaded first 
 startBtn.onclick = startQuiz;
+
+
+
+
 

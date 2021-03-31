@@ -17,7 +17,7 @@ var questions = [
     {
         title: "What is the planet farthest from the Sun?",
         choice: ["Saturn", "Neptune", "Uranus", "Pluto"],
-        answer: ["Neptune"]
+        answer: "Neptune"
     },
     {
         title: "What is the biggest planet in our Solar System?",

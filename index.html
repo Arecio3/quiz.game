@@ -10,16 +10,16 @@
   </head>
 
   <body>
-    <div class="scores"><a href="highscores.html"></a>Highscores</div>
+    <a class="scores" href="./highscores.html">Highscores</a>
 
-    <div class="timer">Time: <span id="time">0</span></div>
+    <div class="timer">Time: <span id="time">75</span></div>
 
     <main>
-      <div id="start-screen" class="start">
-        <h1>Quiz Game!</h1>
+      <div id="start-screen">
+        <h1>Space Quiz!</h1>
         <p>
-          Try to answer the random questions within the given time limit! Keep in
-          mind that incorrect answers will penalize your score/time by 10 seconds
+          Try to answer the space questions within the given time limit! Keep in
+          mind that incorrect answers will penalize your score/time by 10 seconds!
         </p>
         <button id="start">Start Quiz</button>
 
@@ -28,14 +28,15 @@
       <div id="questions" class="hide">
           <h2 id="question-title"></h2>
           <div id="choices" class="choices"></div>
-
+            <p id="showAnswer"></p>
       </div>
 
       <div id="end-screen" class="hide">
         <h2>All Done!</h2>
-        <p>Your final score is <span id="final-score"></span>
+        <p><span id="final-score"></span>
             Enter initials: <input type="text" id="initials" max="3" />
             <button id="submit">Submit</button>
+            <p id="showPoints"></p>
         </p>
       </div>
     </main>
