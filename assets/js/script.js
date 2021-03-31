@@ -10,6 +10,8 @@ var questionChoices = document.querySelector("#choices");
 var timer;
 var correctAnswer = 0;
 
+// hooks into highscores page
+var highscoreResults = document.getElementById("highscoreResults");
 
 // function for when you press the start quiz button
 function startQuiz() {
@@ -104,16 +106,28 @@ function setTime() {
 
   function gameOver () {
       stopTimer();
-      var pointElement = document.getElementById("showPoints")
+      var pointElement = document.getElementById("questionsCorrect")
       var endScreen = document.querySelector('#end-screen');
+      var showPointEl = document.getElementById("showPoints");
       endScreen.setAttribute('class', 'choices');
       questionsElement.setAttribute('class', 'hide');
-      pointElement.innerHTML = "Your final score is" + " " + correctAnswer;
+      pointElement.innerHTML = "You got" + " " + correctAnswer + " " + "questions correct!";
+      showPointEl.innerHTML = "Your Points! " + (count + 1);
+
       
   }
 
 
+var buttonElement = document.getElementById("submit")
+buttonElement.addEventListener("click",submitClick);
 
+function submitClick () {
+    var initialElement = document.getElementById("initials")
+    var initialElement = initialElement.value;
+    localStorage.setItem("initials",  JSON.stringify(initialElement +(count + 1)));
+    console.log(initialElement);
+    localStorage.getItem.appendChild("");
+}
 // is the click even listener for the quiz to start it's put in the end so all the questions are loaded first 
 startBtn.onclick = startQuiz;
 
