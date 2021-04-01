@@ -1,5 +1,6 @@
 // varaible that holds the index of current questions
 var currentQuestionIndex = 0;
+//time on the clock
 var count = 75;
 
 // hooks into html 
@@ -7,9 +8,18 @@ var startBtn = document.querySelector("#start");
 var questionsElement = document.querySelector("#questions");
 var timerElement = document.querySelector("#time");
 var questionChoices = document.querySelector("#choices");
+var initialElement = document.getElementById("initials");
+var buttonElement = document.getElementById("submit");
+var endScreen = document.querySelector('#end-screen');
 var timer;
 var correctAnswer = 0;
-
+var listOfScores;
+// making sure theres something entered
+if (JSON.parse(localStorage.getItem("Highscores"))=== null) {
+    listOfScores = []; 
+} else { // if there is initials it takes it with the points and puts it into a string 
+    listOfScores = JSON.parse(localStorage.getItem("Highscores"));
+}
 // hooks into highscores page
 var highscoreResults = document.getElementById("highscoreResults");
 
@@ -78,7 +88,7 @@ function getAnswer() {
     } 
     // increments the var by 1 so the next question appears when the getCurrentQuestion runs it prints the next question
     currentQuestionIndex++; 
-    if (currentQuestionIndex === questions.length-0) {
+    if (currentQuestionIndex === questions.length) {
         gameOver();
     } else {
         getCurrentQuestion();
@@ -107,7 +117,7 @@ function setTime() {
   function gameOver () {
       stopTimer();
       var pointElement = document.getElementById("questionsCorrect")
-      var endScreen = document.querySelector('#end-screen');
+      
       var showPointEl = document.getElementById("showPoints");
       endScreen.setAttribute('class', 'choices');
       questionsElement.setAttribute('class', 'hide');
@@ -118,15 +128,36 @@ function setTime() {
   }
 
 
-var buttonElement = document.getElementById("submit")
+var buttonElement = document.getElementById("submit");
 buttonElement.addEventListener("click",submitClick);
 
 function submitClick () {
-    var initialElement = document.getElementById("initials")
-    var initialElement = initialElement.value;
-    localStorage.setItem("initials",  JSON.stringify(initialElement +(count + 1)));
-    console.log(initialElement);
-    localStorage.getItem.appendChild("");
+    var scoreUrl = "./highscores.html"
+    window.location = scoreUrl;
+    listOfScores = JSON.parse(localStorage.getItem(".setHighscores")) || [];
+    var initials = initialElement.value;
+    var setHighscore = {
+        finalscore: count,
+        initials: initials
+    }
+    var resetButton = document.createElement("button");
+    
+    listOfScores.push(setHighscore)
+    localStorage.setItem(".setHighscores", JSON.stringify(listOfScores))
+    console.log(setHighscore);
+    resetButton.textContent = "Reset"
+    resetButton.onclick = resetQuiz;
+    endScreen.appendChild(resetButton);
+    
+
+    
+    
+}
+
+function resetQuiz () {
+    endScreen.setAttribute('class', 'hide');
+    startQuiz();
+    getCurrentQuestion();
 }
 // is the click even listener for the quiz to start it's put in the end so all the questions are loaded first 
 startBtn.onclick = startQuiz;
@@ -135,3 +166,4 @@ startBtn.onclick = startQuiz;
 
 
 
+ 

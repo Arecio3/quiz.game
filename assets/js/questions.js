@@ -26,5 +26,7 @@ var questions = [
     }
 ]
 
+
+
 // var wrongAnswers = ["300", "200", "364"]
 
