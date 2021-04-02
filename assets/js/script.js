@@ -1,5 +1,5 @@
 // varaible that holds the index of current questions
-var currentQuestionIndex = 0;
+var questionsIndex = 0;
 //time on the clock
 var count = 75;
 
@@ -10,7 +10,7 @@ var timerElement = document.querySelector("#time");
 var questionChoices = document.querySelector("#choices");
 var initialElement = document.getElementById("initials");
 var buttonElement = document.getElementById("submit");
-var endScreen = document.querySelector('#end-screen');
+var endScreen = document.querySelector('#finalScreen');
 var timer;
 var correctAnswer = 0;
 var listOfScores;
@@ -47,7 +47,7 @@ function startQuiz() {
 function getCurrentQuestion() {
     // makes the current question equal to the questions array which is also equal to 0 making it start at the first question
     console.log(questions);
-    var currentQuestion = questions[currentQuestionIndex];
+    var currentQuestion = questions[questionsIndex];
     // connects to the question title id in the HTML to push the title from the questions array to it with text content
     var titleElement = document.querySelector("#question-title");
     //prints the title for each questions
@@ -78,7 +78,7 @@ function getAnswer() {
     var answerElement = document.getElementById("showAnswer")
 
     // if the value of the click was an answer on the array it alerts that you got it correct
-    if (this.value === questions[currentQuestionIndex].answer) {
+    if (this.value === questions[questionsIndex].answer) {
         answerElement.innerHTML = "Correct!"
         correctAnswer = correctAnswer + 1;
         // if a wrong choice was clicked than it alerts you
@@ -87,8 +87,8 @@ function getAnswer() {
         count = count - 10;
     } 
     // increments the var by 1 so the next question appears when the getCurrentQuestion runs it prints the next question
-    currentQuestionIndex++; 
-    if (currentQuestionIndex === questions.length) {
+    questionsIndex++; 
+    if (questionsIndex === questions.length) {
         gameOver();
     } else {
         getCurrentQuestion();
