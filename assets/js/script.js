@@ -4,9 +4,9 @@ var questionsIndex = 0;
 var count = 75;
 
 // hooks into html 
-var startBtn = document.querySelector("#start");
+var startButton = document.querySelector("#start");
 var questionsElement = document.querySelector("#questions");
-var timerElement = document.querySelector("#time");
+var clockElement = document.querySelector("#time");
 var questionChoices = document.querySelector("#choices");
 var initialElement = document.getElementById("initials");
 var buttonElement = document.getElementById("submit");
@@ -99,7 +99,7 @@ function getAnswer() {
 
 
 function setTime() {
-    timerElement.textContent = count;
+    clockElement.textContent = count;
     if (count <= 0) {
        stopTimer(); 
     } else {
@@ -160,7 +160,7 @@ function resetQuiz () {
     getCurrentQuestion();
 }
 // is the click even listener for the quiz to start it's put in the end so all the questions are loaded first 
-startBtn.onclick = startQuiz;
+startButton.onclick = startQuiz;
 
 
 
