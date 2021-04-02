@@ -1,5 +1,5 @@
 * {
-
+    
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
@@ -13,8 +13,15 @@ main {
 }
 
 .timer {
+    color: white;
     display: flex;
     justify-content: flex-end;
+    
+}
+
+#time {
+    color: black;
+    font-size: large;
 }
 
 .choices {
@@ -30,9 +37,7 @@ button {
 }
 
 .scores {
-    font-weight: bolder;
-}
-
-.timer {
-    color: blue;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
 }

@@ -29,6 +29,6 @@ clearButton.addEventListener("click", clearHighscore);
 
 function clearHighscore () {
    
-    initialElement.setAttribute("hide")
-    scoreElement.setAttribute("hide")
+    initialElement.remove("span")
+    scoreElement.remove("span")
 }
