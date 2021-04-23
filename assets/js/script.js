@@ -102,6 +102,7 @@ function setTime() {
     clockElement.textContent = count;
     if (count <= 0) {
        stopTimer(); 
+       gameOver();
     } else {
         count--
     }
@@ -110,6 +111,7 @@ function setTime() {
 
   function stopTimer () {
       clearInterval(timer);
+      
 
   }
 
