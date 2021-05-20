@@ -1,7 +1,7 @@
 // varaible that holds the index of current questions
 var questionsIndex = 0;
 //time on the clock
-var count = 75;
+var count = 10;
 
 // hooks into html 
 var startButton = document.querySelector("#start");
