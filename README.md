@@ -11,8 +11,13 @@
   
   # Description 
 This is a timed quiz game that deducts time/points or 10 seconds from the clock for evry question you get wrong and you can also record your highscores!
+
+# Site
+[Link](https://arecio3.github.io/quiz.game/)
+
   <img src="pics-of-site/screenshot1.png"></img>
   <img src="pics-of-site/screenshot2.png"></img>
+
   # Installation
    **npm i**
 
